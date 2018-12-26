@@ -8,8 +8,8 @@ export default class View extends EventEmitter {
     this.input = this.form.querySelector(".js-actions__input");
     this.list = document.querySelector(".js-cards-list");
     this.buttonLoadMore = document.querySelector(".js-button-load-more");
-    this.modal = document.querySelector('.js-modal');
-    this.modalImage = document.querySelector('.js-modal-content__img');
+    this.modal = document.querySelector(".js-modal");
+    this.modalImage = document.querySelector(".js-modal-content__img");
     this.buttonModalClose = document.querySelector('[data-actions="close"]');
     this.currentValue = "";
     this.currentPage = 1;
@@ -19,10 +19,9 @@ export default class View extends EventEmitter {
       "click",
       this.loadMoreImages.bind(this)
     );
-    this.list.addEventListener('click', this.handleClickCard.bind(this));
-    this.buttonModalClose.addEventListener('click', this.handleCloseModal.bind(this))
-    this.modal.addEventListener('click', this.handleCloseModal.bind(this));
-    window.addEventListener('keydown', this.handleEscapeCloseModal.bind(this));
+    this.list.addEventListener("click", this.handleClickCard.bind(this));
+    this.modal.addEventListener("click", this.handleCloseModal.bind(this));
+    window.addEventListener("keydown", this.handleEscapeCloseModal.bind(this));
   }
 
   formSubmit(e) {
@@ -60,12 +59,11 @@ export default class View extends EventEmitter {
 
   handleClickCard({ target }) {
     const nodeName = target.nodeName;
-
-    if (nodeName !== 'IMG') {
+    if (nodeName !== "IMG") {
       return;
     }
 
-    this.emit('openModal', target.src);
+    this.emit("openModal", target.src);
   }
 
   showModal(src) {
@@ -78,15 +76,32 @@ export default class View extends EventEmitter {
   }
 
   handleEscapeCloseModal(event) {
-    if (event.code !== 'Escape') {
-      return
+    if (event.code !== "Escape") {
+      return;
     }
 
     this.emit("closeModal", event);
   }
 
   closeModal(event) {
-    if (this.modal.classList.contains("modal--hidden")) {
+    if (
+      event.target.classList.contains("js-modal") &&
+      this.modal.classList.contains("modal--hidden")
+    ) {
+      this.modal.classList.remove("modal--hidden");
+    }
+
+    if (
+      event.target.classList.contains("js-icon-cancel") &&
+      this.modal.classList.contains("modal--hidden")
+    ) {
+      this.modal.classList.remove("modal--hidden");
+    }
+
+    if (
+      event.code === "Escape" &&
+      this.modal.classList.contains("modal--hidden")
+    ) {
       this.modal.classList.remove("modal--hidden");
     }
   }
