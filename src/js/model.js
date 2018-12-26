@@ -11,8 +11,11 @@ export default class Model {
     const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=8&page=${page}`;
 
     return axios(url).then(
-      response =>
-        (this.images = [...response.data.hits.map(item => item.webformatURL)])
+      response => {
+        console.log(response.data.hits);
+        return (this.images = [...response.data.hits.map(item => item.webformatURL)])
+
+      }
     );
   }
 

@@ -8,6 +8,9 @@ export default class View extends EventEmitter {
     this.input = this.form.querySelector(".js-actions__input");
     this.list = document.querySelector(".js-cards-list");
     this.buttonLoadMore = document.querySelector(".js-button-load-more");
+    this.modal = document.querySelector('.js-modal');
+    this.modalImage = document.querySelector('.js-modal-content__img');
+    this.buttonModalClose = document.querySelector('[data-actions="close"]');
     this.currentValue = "";
     this.currentPage = 1;
     this.headerActions = document.querySelector(".js-header__actions");
@@ -16,6 +19,10 @@ export default class View extends EventEmitter {
       "click",
       this.loadMoreImages.bind(this)
     );
+    this.list.addEventListener('click', this.handleClickCard.bind(this));
+    this.buttonModalClose.addEventListener('click', this.handleCloseModal.bind(this))
+    this.modal.addEventListener('click', this.handleCloseModal.bind(this));
+    window.addEventListener('keydown', this.handleEscapeCloseModal.bind(this));
   }
 
   formSubmit(e) {
@@ -49,6 +56,43 @@ export default class View extends EventEmitter {
     } else {
       this.hideLoadMoreButton();
     }
+  }
+
+  handleClickCard({ target }) {
+    const nodeName = target.nodeName;
+
+    if (nodeName !== 'IMG') {
+      return;
+    }
+
+    this.emit('openModal', target.src);
+  }
+
+  showModal(src) {
+    this.modalInsertPicture(src);
+    this.modal.classList.add("modal--hidden");
+  }
+
+  handleCloseModal(event) {
+    this.emit("closeModal", event);
+  }
+
+  handleEscapeCloseModal(event) {
+    if (event.code !== 'Escape') {
+      return
+    }
+
+    this.emit("closeModal", event);
+  }
+
+  closeModal(event) {
+    if (this.modal.classList.contains("modal--hidden")) {
+      this.modal.classList.remove("modal--hidden");
+    }
+  }
+
+  modalInsertPicture(src) {
+    this.modalImage.src = src;
   }
 
   showLoadMoreButton() {

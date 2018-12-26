@@ -13,20 +13,24 @@
 }
 
 .modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 50%;
+
+  
+  @include for-size(phone-only) {
+    width: 85%;
+    }
+  @include for-size(tablet-portrait-up) {
+    width: 60%;
+  }
   &__img-wrap {
-    width: 50%;
-    margin-top: calculateRem(216);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calculateRem(16);
-    @include for-size(phone-only) {
-        width: 85%;
-        margin-top: calculateRem(85);
-    }
-    @include for-size(tablet-portrait-up) {
-        width: 60%;
-        margin-top: calculateRem(135);
-    }
+  
   }
 
   &__actions-list {

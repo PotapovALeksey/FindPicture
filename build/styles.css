@@ -344,6 +344,12 @@ template {
 .header__actions {
   text-align: center;
   margin-top: 7.9375rem; }
+  @media (max-width: 599px) {
+    .header__actions {
+      margin-top: 1.875rem; } }
+  @media (min-width: 600px) and (max-width: 899px) {
+    .header__actions {
+      margin-top: 1.875rem; } }
 
 .actions__logo-link {
   margin-bottom: 2.875rem;
@@ -535,28 +541,30 @@ html {
 .modal--hidden {
   display: block; }
 
-.modal-content__img-wrap {
-  width: 50%;
-  margin-top: 13.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem; }
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  width: 50%; }
   @media (max-width: 599px) {
-    .modal-content__img-wrap {
-      width: 85%;
-      margin-top: 5.3125rem; } }
+    .modal-content {
+      width: 85%; } }
   @media (min-width: 600px) and (max-width: 899px) {
-    .modal-content__img-wrap {
-      width: 60%;
-      margin-top: 8.4375rem; } }
-
-.modal-content__actions-list {
-  display: flex;
-  background-color: #673ab7;
-  width: 125px;
-  padding: 0.5rem 0.5rem;
-  border-radius: 45px;
-  margin: 0 auto; }
+    .modal-content {
+      width: 60%; } }
+  .modal-content__img-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem; }
+  .modal-content__actions-list {
+    display: flex;
+    background-color: #673ab7;
+    width: 125px;
+    padding: 0.5rem 0.5rem;
+    border-radius: 45px;
+    margin: 0 auto; }
 
 .actions-list__item:not(:last-child) {
   margin-right: 1rem; }

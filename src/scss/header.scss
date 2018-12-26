@@ -47,6 +47,12 @@
 .header__actions {
   text-align: center;
   margin-top: calculateRem(127);
+  @include for-size(phone-only) {
+    margin-top: calculateRem(30);
+  }
+  @include for-size(tablet-portrait-up) {
+    margin-top: calculateRem(30);
+  }
 }
 
 .actions {
