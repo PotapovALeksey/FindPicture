@@ -1,0 +1,63 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(37, 45, 58, 0.7);
+}
+
+.modal--hidden {
+  display: block;
+}
+
+.modal-content {
+  &__img-wrap {
+    width: 50%;
+    margin-top: calculateRem(216);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calculateRem(16);
+    @include for-size(phone-only) {
+        width: 85%;
+        margin-top: calculateRem(85);
+    }
+    @include for-size(tablet-portrait-up) {
+        width: 60%;
+        margin-top: calculateRem(135);
+    }
+  }
+
+  &__actions-list {
+    display: flex;
+    background-color: $color-button;
+    width: 125px;
+    padding: calculateRem(8) calculateRem(8);
+
+    border-radius: 45px;
+    margin: 0 auto;
+  }
+}
+.actions-list {
+  &__item {
+    &:not(:last-child) {
+      margin-right: calculateRem(16);
+    }
+  }
+
+  &__button {
+    font-size: 14px;
+    display: inline-block;
+    background-color: transparent;
+    &--white {
+      color: $font-color2;
+    }
+    &--yellow {
+      color: $color-button2;
+    }
+    &--mr {
+      margin-right: -6px;
+    }
+  }
+}

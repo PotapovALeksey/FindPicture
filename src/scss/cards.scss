@@ -1,0 +1,64 @@
+.main {
+  margin-bottom: calculateRem(35);
+}
+
+.cards-list {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: calculateRem(14);
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+
+  @include for-size(phone-only) {
+    &__item {
+      flex-basis: 100%;
+      margin-bottom: 3.5%;
+    }
+  }
+
+  @include for-size(tablet-portrait-up) {
+    &__item {
+      flex-basis: 48%;
+      margin-bottom: 2%;
+      &:not(:nth-child(2n + 2)) {
+        margin-right: 2%;
+      }
+    }
+  }
+
+  @include for-size(tablet-landscape-up) {
+    &__item {
+      flex-basis: 32.5%;
+      margin-bottom: 1.25%;
+      &:not(:nth-child(3n + 3)) {
+        margin-right: 1.25%;
+      }
+    }
+  }
+
+  @include for-size(desktop-up) {
+    &__item {
+      flex-basis: 23.5%;
+      margin-bottom: 1.5%;
+      &:not(:nth-child(4n + 4)) {
+        margin-right: 1.5%;
+      }
+    }
+  }
+}
+
+.button-load-more {
+  display: none;
+  margin: 0 auto;
+  padding: 6px 22px;
+  background-color: $color-button2;
+  font-size: $font-size-small2;
+  color: $font-color2;
+  border-radius: 15px;
+  outline: none;
+}
+
+.button-load-more.visible {
+  display: block;
+}

@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.2;
+  font-family: $font-family-roboto;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

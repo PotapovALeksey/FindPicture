@@ -1,0 +1,17 @@
+@function calculateRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+$font-family-roboto: "Roboto", sans-serif;
+$font-family-icon: "fontello";
+
+$color-button: #673ab7;
+$color-button2: #cddc39;
+
+$font-color: #d1d3d4;
+$font-color2: #ffffff;
+
+$font-size-small: 12px;
+$font-size-small2: 14px;
+$font-size-medium: 16px;
