@@ -3,13 +3,16 @@ export default class Controller {
     this.model = model;
     this.view = view;
 
-    view.on("create", this.createCard.bind(this));
+    view.on("create", this.createCards.bind(this));
     view.on("loadMore", this.updateCard.bind(this));
-    view.on('openModal', this.openModal.bind(this));
-    view.on('closeModal', this.closeModal.bind(this));
+    view.on("openModal", this.openModal.bind(this));
+    view.on("closeModal", this.closeModal.bind(this));
+    view.on("addFavorites", this.addToFavorites.bind(this));
+    view.on("createFavoritesCards", this.createFavoritesCards.bind(this));
+    view.on("deleteFavorites", this.deleteFavoritesCard.bind(this));
   }
 
-  createCard(value) {
+  createCards(value) {
     this.model.getImages(value).then(data => this.view.createMarkup(data));
   }
 
@@ -17,11 +20,27 @@ export default class Controller {
     this.model.getMoreImages(value).then(data => this.view.createMarkup(data));
   }
 
-  openModal(target) {
-    this.view.showModal(target)
+  openModal(value) {
+    this.view.showModal(value);
   }
 
   closeModal(event) {
     this.view.closeModal(event);
+  }
+
+  addToFavorites(image) {
+    this.model.addToFavorites(image);
+  }
+
+  createFavoritesCards(data) {
+    this.model
+      .getFavoritesCards()
+      .then(data => this.view.createFavoritesMarkup(data));
+  }
+
+  deleteFavoritesCard(item) {
+    console.log(item);
+    this.model.deleteFavoritesCard(item);
+    this.view.deleteItem(item);
   }
 }

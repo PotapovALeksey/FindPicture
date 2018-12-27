@@ -1,16 +1,26 @@
 import EventEmitter from "./services/event-emiter";
 import createCard from "./templates/cards.hbs";
+import createFavoritesCard from "./templates/favorites-cards.hbs";
 
 export default class View extends EventEmitter {
   constructor() {
     super();
     this.form = document.querySelector(".js-actions__form");
     this.input = this.form.querySelector(".js-actions__input");
-    this.list = document.querySelector(".js-cards-list");
+    this.main = document.querySelector(".js-main");
     this.buttonLoadMore = document.querySelector(".js-button-load-more");
     this.modal = document.querySelector(".js-modal");
     this.modalImage = document.querySelector(".js-modal-content__img");
     this.buttonModalClose = document.querySelector('[data-actions="close"]');
+    this.buttonAddToFavorites = document.querySelector(
+      '[data-actions="favorites"]'
+    );
+    this.buttonFavoritesMarkup = document.querySelector(
+      ".js-header__btn-favorites"
+    );
+    this.buttonFavoritesDelete = document.querySelector(
+      ".js-favorites-cards-list__button"
+    );
     this.body = document.querySelector("body");
     this.currentValue = "";
     this.currentPage = 1;
@@ -20,9 +30,17 @@ export default class View extends EventEmitter {
       "click",
       this.loadMoreImages.bind(this)
     );
-    this.list.addEventListener("click", this.handleClickCard.bind(this));
+
     this.modal.addEventListener("click", this.handleCloseModal.bind(this));
     window.addEventListener("keydown", this.handleEscapeCloseModal.bind(this));
+    this.buttonAddToFavorites.addEventListener(
+      "click",
+      this.handleClickAddFavorites.bind(this)
+    );
+    this.buttonFavoritesMarkup.addEventListener(
+      "click",
+      this.handleClickCreateFavoritesCards.bind(this)
+    );
   }
 
   // createCard(image) {
@@ -34,9 +52,10 @@ export default class View extends EventEmitter {
   //   div.setAttribute(
   //     "style",
   //     "background-image: url(" +
-  //       image +
+  //       image.src +
   //       ");background-repeat: no-repeat;background-size: 100% 100%"
   //   );
+  // div.dataset.id = image.id
   //   card.append(div);
   //   console.log(card);
   //   return card;
@@ -60,18 +79,40 @@ export default class View extends EventEmitter {
   }
 
   createMarkup(data) {
-    const markup = data.reduce(
-      (acc, image) => (acc += createCard({ image })),
-      ""
-    );
+    this.main.addEventListener("click", this.handleClickCard.bind(this));
 
-    this.list.innerHTML = markup;
+    const markup = createCard(data);
+    this.main.innerHTML = markup;
 
     if (data.length !== 0) {
       this.showLoadMoreButton();
     } else {
       this.hideLoadMoreButton();
     }
+  }
+
+  createFavoritesMarkup(data) {
+    if (data.length === 0) {
+      this.main.innerHTML = this.addNoneFavorites();
+      return;
+    }
+    const markup = createFavoritesCard(data);
+    this.hideLoadMoreButton();
+    this.addTitleFavorites();
+    this.main.innerHTML = this.addTitleFavorites() + markup;
+    const favoritesList = document.querySelector(".js-favorites-cards-list");
+    favoritesList.addEventListener(
+      "click",
+      this.handleClickDeleteFavorites.bind(this)
+    );
+  }
+
+  addTitleFavorites() {
+    return '<p class="favorite-title">Избранное</p>';
+  }
+
+  addNoneFavorites() {
+    return '<p class="favorite-title">У Вас нету избранных изображений!</p>';
   }
   // createMarkup(data) {
   //   const markup = data.map(image => this.createCard(image));
@@ -86,17 +127,26 @@ export default class View extends EventEmitter {
   // }
 
   handleClickCard({ target }) {
-    const nodeName = target.nodeName;
-    if (nodeName !== "IMG") {
+    const isImage = target.classList.contains("js-cards-list__img");
+
+    if (!isImage) {
       return;
     }
 
-    this.emit("openModal", target.src);
+    this.emit("openModal", { src: target.src, id: target.dataset.id });
   }
 
-  showModal(src) {
-    this.modalInsertPicture(src);
-    this.modal.classList.add("modal--hidden");
+  handleClickAddFavorites(event) {
+    const image = {
+      id: this.modalImage.dataset.id,
+      src: this.modalImage.src
+    };
+
+    this.emit("addFavorites", image);
+  }
+
+  handleClickCreateFavoritesCards() {
+    this.emit("createFavoritesCards");
   }
 
   handleCloseModal(event) {
@@ -109,6 +159,26 @@ export default class View extends EventEmitter {
     }
 
     this.emit("closeModal", event);
+  }
+
+  handleClickDeleteFavorites(event) {
+    const isDelete = event.target.classList.contains("js-icon-delete");
+
+    if (!isDelete) {
+      return;
+    }
+    const item = event.target.closest(".js-favorites-cards-list__item");
+
+    this.emit("deleteFavorites", item);
+  }
+
+  deleteItem(item) {
+    item.remove();
+  }
+
+  showModal(src) {
+    this.modalInsertPictureId(src);
+    this.modal.classList.add("modal--hidden");
   }
 
   closeModal(event) {
@@ -134,8 +204,9 @@ export default class View extends EventEmitter {
     }
   }
 
-  modalInsertPicture(src) {
-    this.modalImage.src = src;
+  modalInsertPictureId(src) {
+    this.modalImage.src = src.src;
+    this.modalImage.dataset.id = src.id;
   }
 
   showLoadMoreButton() {

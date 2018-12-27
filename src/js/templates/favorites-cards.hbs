@@ -1,0 +1,10 @@
+<ul class="list favorites-cards-list js-favorites-cards-list">
+    {{#each this}}
+    <li class="favorites-cards-list__item js-favorites-cards-list__item">
+        <img class="img favorites-cards-list__img js-favorites-cards-list__img" src={{src}} data-id={{id}} alt="images" />
+        <button class="btn favorites-cards-list__button js-favorites-cards-list__button">
+            <i class="icon icon-cancel js-icon-delete"></i>
+        </button>
+    </li>
+    {{/each}}
+</ul>

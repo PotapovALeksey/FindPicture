@@ -1,3 +1,7 @@
-<li class="cards-list__item">
-    <img class="img cards-list__img" src={{image}} alt="image" />
-</li>
+<ul class="list cards-list js-cards-list">
+    {{#each this}}
+    <li class="cards-list__item">
+        <img class="img cards-list__img js-cards-list__img" src={{url}} data-id={{id}} alt="image" />
+    </li>
+    {{/each}}
+</ul>

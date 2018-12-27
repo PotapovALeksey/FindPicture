@@ -14,7 +14,9 @@
 
   <body>
     <header class="header">
-      <button class="btn header__btn-favorites">Избранное</button>
+      <button class="btn header__btn-favorites js-header__btn-favorites">
+        Избранное
+      </button>
 
       <div class="header__actions js-header__actions">
         <a href="#" class="actions__logo-link">
@@ -34,135 +36,11 @@
         </form>
       </div>
     </header>
-    <main class="main">
-      <!-- <ul class="list favorites-cards-list">
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-        <li class="favorites-cards-list__item">
-          <img
-            class="img favorites-cards-list__img"
-            src="./../src/img/123.jpg"
-            alt=""
-          />
-          <button class="btn favorites-cards-list__button">
-            <i class="icon icon-cancel"></i>
-          </button>
-        </li>
-      </ul> -->
-      <ul class="list cards-list js-cards-list">
-        <!-- <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li>
-        <li class="cards-list__item">
-          <img class="img cards-list__img" src="./../src/img/123.jpg" alt="" />
-        </li> -->
-      </ul>
+    <main class="main js-main"></main>
 
-      <!--
-        <ul class="list favorites-cards-list">
-          <li class="favorites-cards-list__item">
-            <img
-              class="img favorites-cards-list__img"
-              src="./../src/img/123.jpg"
-              alt=""
-            />
-            <button class="btn favorites-cards-list__button">
-              <i class="icon icon-cancel"></i>
-            </button>
-          </li>
-        </ul>
-      -->
-
-      <button class="btn button-load-more js-button-load-more">
-        Показать ещё
-      </button>
-    </main>
+    <button class="btn button-load-more js-button-load-more">
+      Показать ещё
+    </button>
 
     <div class="modal js-modal">
       <div class="modal-content">
@@ -189,9 +67,13 @@
 
           <li class="actions-list__item">
             <button
+              data-actions="favorites"
               class="btn actions-list__button actions-list__button--yellow"
             >
-              <i class="icon icon-star actions-list__icon-star"></i>
+              <i
+                class="icon icon-star actions-list__icon-star 
+              js-icon-star"
+              ></i>
             </button>
           </li>
           <li class="actions-list__item">
