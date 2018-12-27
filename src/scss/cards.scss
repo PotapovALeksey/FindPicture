@@ -9,19 +9,43 @@
   display: flex;
   flex-wrap: wrap;
   width: 80%;
+  justify-content: space-between;
+  &__img {
+    @include for-size(phone-only) {
+      min-height: 160px;
+      max-height: 307px;
+    }
+
+    @include for-size(tablet-portrait-up) {
+      min-height: 155px;
+      max-height: 233px;
+    }
+
+    @include for-size(tablet-landscape-up) {
+      min-height: 155px;
+      max-height: 207px;
+    }
+
+    @include for-size(desktop-up) {
+      min-height: 150px;
+      max-height: 225px;
+    }
+  }
+
   @include for-size(phone-only) {
     &__item {
       flex-basis: 100%;
-      margin-bottom: 3.5%;
+      &:not(:last-child) {
+        margin-bottom: 3.5%;
+      }
     }
   }
 
   @include for-size(tablet-portrait-up) {
     &__item {
-      flex-basis: 48%;
-      margin-bottom: 2%;
-      &:not(:nth-child(2n + 2)) {
-        margin-right: 2%;
+      flex-basis: 49%;
+      &:not(:nth-last-child(-n + 2)) {
+        margin-bottom: 2%;
       }
     }
   }
@@ -29,9 +53,8 @@
   @include for-size(tablet-landscape-up) {
     &__item {
       flex-basis: 32.5%;
-      margin-bottom: 1.25%;
-      &:not(:nth-child(3n + 3)) {
-        margin-right: 1.25%;
+      &:not(:nth-last-child(-n + 3)) {
+        margin-bottom: 1.25%;
       }
     }
   }
@@ -39,9 +62,8 @@
   @include for-size(desktop-up) {
     &__item {
       flex-basis: 23.5%;
-      margin-bottom: 1.5%;
-      &:not(:nth-child(4n + 4)) {
-        margin-right: 1.5%;
+      &:not(:nth-last-child(-n + 4)) {
+        margin-bottom: 1.5%;
       }
     }
   }

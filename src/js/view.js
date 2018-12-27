@@ -11,6 +11,7 @@ export default class View extends EventEmitter {
     this.modal = document.querySelector(".js-modal");
     this.modalImage = document.querySelector(".js-modal-content__img");
     this.buttonModalClose = document.querySelector('[data-actions="close"]');
+    this.body = document.querySelector("body");
     this.currentValue = "";
     this.currentPage = 1;
     this.headerActions = document.querySelector(".js-header__actions");
@@ -23,6 +24,23 @@ export default class View extends EventEmitter {
     this.modal.addEventListener("click", this.handleCloseModal.bind(this));
     window.addEventListener("keydown", this.handleEscapeCloseModal.bind(this));
   }
+
+  // createCard(image) {
+  //   const card = document.createElement("li");
+  //   card.classList.add("cards-list__item");
+
+  //   const div = document.createElement("div");
+  //   div.classList.add("cards-list__img");
+  //   div.setAttribute(
+  //     "style",
+  //     "background-image: url(" +
+  //       image +
+  //       ");background-repeat: no-repeat;background-size: 100% 100%"
+  //   );
+  //   card.append(div);
+  //   console.log(card);
+  //   return card;
+  // }
 
   formSubmit(e) {
     e.preventDefault();
@@ -51,11 +69,21 @@ export default class View extends EventEmitter {
 
     if (data.length !== 0) {
       this.showLoadMoreButton();
-      this.removeMarginTop();
     } else {
       this.hideLoadMoreButton();
     }
   }
+  // createMarkup(data) {
+  //   const markup = data.map(image => this.createCard(image));
+  //   console.log(markup);
+  //   this.list.append(...markup);
+
+  //   if (data.length !== 0) {
+  //     this.showLoadMoreButton();
+  //   } else {
+  //     this.hideLoadMoreButton();
+  //   }
+  // }
 
   handleClickCard({ target }) {
     const nodeName = target.nodeName;
@@ -124,9 +152,5 @@ export default class View extends EventEmitter {
 
   incrementCurrentPage() {
     this.currentPage += 1;
-  }
-
-  removeMarginTop() {
-    this.headerActions.style.marginTop = "-19px";
   }
 }
