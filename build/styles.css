@@ -398,6 +398,10 @@ html {
 .container {
   padding-bottom: 2.25rem; }
 
+.scroll-hidden {
+  overflow: hidden;
+  margin-right: 1.0625rem; }
+
 .list {
   list-style: none;
   margin: 0;

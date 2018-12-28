@@ -14,6 +14,11 @@ html {
   padding-bottom: calculateRem(36);
 }
 
+.scroll-hidden {
+  overflow: hidden;
+  margin-right: calculateRem(17);
+}
+
 .list {
   list-style: none;
   margin: 0;
@@ -35,5 +40,4 @@ html {
 .img {
   display: block;
   width: 100%;
-  // height: auto;
 }

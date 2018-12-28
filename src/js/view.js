@@ -43,24 +43,6 @@ export default class View extends EventEmitter {
     );
   }
 
-  // createCard(image) {
-  //   const card = document.createElement("li");
-  //   card.classList.add("cards-list__item");
-
-  //   const div = document.createElement("div");
-  //   div.classList.add("cards-list__img");
-  //   div.setAttribute(
-  //     "style",
-  //     "background-image: url(" +
-  //       image.src +
-  //       ");background-repeat: no-repeat;background-size: 100% 100%"
-  //   );
-  // div.dataset.id = image.id
-  //   card.append(div);
-  //   console.log(card);
-  //   return card;
-  // }
-
   formSubmit(e) {
     e.preventDefault();
     this.currentValue = this.input.value;
@@ -114,17 +96,6 @@ export default class View extends EventEmitter {
   addNoneFavorites() {
     return '<p class="favorite-title">У Вас нету избранных изображений!</p>';
   }
-  // createMarkup(data) {
-  //   const markup = data.map(image => this.createCard(image));
-  //   console.log(markup);
-  //   this.list.append(...markup);
-
-  //   if (data.length !== 0) {
-  //     this.showLoadMoreButton();
-  //   } else {
-  //     this.hideLoadMoreButton();
-  //   }
-  // }
 
   handleClickCard({ target }) {
     const isImage = target.classList.contains("js-cards-list__img");
@@ -178,6 +149,7 @@ export default class View extends EventEmitter {
 
   showModal(src) {
     this.modalInsertPictureId(src);
+    this.stopScroll();
     this.modal.classList.add("modal--hidden");
   }
 
@@ -187,6 +159,7 @@ export default class View extends EventEmitter {
       this.modal.classList.contains("modal--hidden")
     ) {
       this.modal.classList.remove("modal--hidden");
+      this.startScroll();
     }
 
     if (
@@ -194,6 +167,7 @@ export default class View extends EventEmitter {
       this.modal.classList.contains("modal--hidden")
     ) {
       this.modal.classList.remove("modal--hidden");
+      this.startScroll();
     }
 
     if (
@@ -201,6 +175,7 @@ export default class View extends EventEmitter {
       this.modal.classList.contains("modal--hidden")
     ) {
       this.modal.classList.remove("modal--hidden");
+      this.startScroll();
     }
   }
 
@@ -223,5 +198,13 @@ export default class View extends EventEmitter {
 
   incrementCurrentPage() {
     this.currentPage += 1;
+  }
+
+  stopScroll() {
+    this.body.classList.add("scroll-hidden");
+  }
+
+  startScroll() {
+    this.body.classList.remove("scroll-hidden");
   }
 }
