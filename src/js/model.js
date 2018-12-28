@@ -10,7 +10,7 @@ export default class Model {
 
   createArrayImages(arr) {
     return arr.reduce(
-      (acc, item) => (acc = [...acc, { id: item.id, url: item.webformatURL }]),
+      (acc, item) => (acc = [...acc, { id: item.id, url: item.largeImageURL }]),
       []
     );
   }
@@ -18,9 +18,10 @@ export default class Model {
   getImages({ value, page }) {
     const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=8&page=${page}`;
 
-    return axios(url).then(
-      response => (this.images = this.createArrayImages(response.data.hits))
-    );
+    return axios(url).then(response => {
+      console.log(response.data.hits);
+      return (this.images = this.createArrayImages(response.data.hits));
+    });
   }
   getMoreImages({ value, page }) {
     const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=8&page=${page}`;

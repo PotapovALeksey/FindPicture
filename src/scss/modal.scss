@@ -42,35 +42,34 @@
     }
   }
 
-  &__actions-list {
+  &__actions {
     display: flex;
     background-color: $color-button;
-    width: 125px;
+    width: 128px;
     padding: calculateRem(8) calculateRem(8);
-
     border-radius: 45px;
     margin: 0 auto;
+    &-button {
+      display: inline-block;
+      background-color: transparent;
+
+      &--white {
+        color: $font-color2;
+      }
+      &--yellow {
+        color: $color-button2;
+      }
+
+      &--mr {
+        margin-right: calculateRem(16);
+      }
+      &--mmr {
+        margin-right: calculateRem(-6);
+      }
+    }
   }
 }
-.actions-list {
-  &__item {
-    &:not(:last-child) {
-      margin-right: calculateRem(16);
-    }
-  }
 
-  &__button {
-    font-size: 14px;
-    display: inline-block;
-    background-color: transparent;
-    &--white {
-      color: $font-color2;
-    }
-    &--yellow {
-      color: $color-button2;
-    }
-    &--mr {
-      margin-right: -6px;
-    }
-  }
+.icon {
+  font-size: 14px;
 }

@@ -10,94 +10,98 @@
     />
     <link rel="stylesheet" href="./../src/fonts/css/fontello.css" />
     <title>FindPic</title>
-  <link href="styles.css?440120d9f1d4237da242" rel="stylesheet"></head>
+  <link href="styles.css?a113fd0062a5f876ba03" rel="stylesheet"></head>
 
   <body>
-    <header class="header">
-      <button class="btn header__btn-favorites js-header__btn-favorites">
-        Избранное
+    <div class="container">
+      <header class="header">
+        <div class="header__btn-favorites-wrap">
+          <button class="btn header__btn-favorites js-header__btn-favorites">
+            <i class="header__btn-favorites-icon icon-star"></i> Избранное
+          </button>
+        </div>
+
+        <div class="header__actions js-header__actions">
+          <a href="#" class="actions__logo-link">
+            <img
+              src="./../src/img/logo.jpg"
+              alt="logotype"
+              class="actions__logo"
+            />
+          </a>
+          <form class="actions__form js-actions__form">
+            <input
+              type="text"
+              class="actions__input js-actions__input"
+              placeholder="Введите поисковый запрос"
+            />
+            <button type="submit" class="btn actions__button">Поиск</button>
+          </form>
+        </div>
+      </header>
+      <main class="main js-main"></main>
+
+      <button class="btn button-load-more js-button-load-more">
+        Показать ещё
       </button>
 
-      <div class="header__actions js-header__actions">
-        <a href="#" class="actions__logo-link">
-          <img
-            src="./../src/img/logo.jpg"
-            alt="logotype"
-            class="actions__logo"
-          />
-        </a>
-        <form class="actions__form js-actions__form">
-          <input
-            type="text"
-            class="actions__input js-actions__input"
-            placeholder="Введите поисковый запрос"
-          />
-          <button type="submit" class="btn actions__button">Поиск</button>
-        </form>
-      </div>
-    </header>
-    <main class="main js-main"></main>
+      <div class="modal js-modal">
+        <div class="modal-content">
+          <div class="modal-content__img-wrap">
+            <img
+              src=""
+              alt="image"
+              class="img modal-content__img js-modal-content__img"
+            />
+          </div>
 
-    <button class="btn button-load-more js-button-load-more">
-      Показать ещё
-    </button>
-
-    <div class="modal js-modal">
-      <div class="modal-content">
-        <div class="modal-content__img-wrap">
-          <img
-            src=""
-            alt="image"
-            class="img modal-content__img js-modal-content__img"
-          />
-        </div>
-        <ul class="list modal-content__actions-list">
-          <li class="actions-list__item">
+          <div class="modal-content__actions">
             <button
-              class="btn actions-list__button actions-list__button--white actions-list__button--mr"
+              class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button"
             >
-              <i class="icon icon-left-open actions-list__icon-left-open"></i>
+              <i
+                class="icon icon-left-open modal-content__actions-left-open"
+              ></i>
             </button>
             <button
-              class="btn actions-list__button actions-list__button--white"
+              class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button--mr"
             >
-              <i class="icon icon-right-open actions-list__icon-right-open"></i>
+              <i
+                class="icon icon-right-open modal-content__actions-right-open"
+              ></i>
             </button>
-          </li>
 
-          <li class="actions-list__item">
             <button
               data-actions="favorites"
-              class="btn actions-list__button actions-list__button--yellow"
+              class="btn modal-content__actions-button modal-content__actions-button--yellow modal-content__actions-button--mr"
             >
               <i
-                class="icon icon-star actions-list__icon-star 
-              js-icon-star"
+                class="icon icon-star modal-content__actions-star
+      js-icon-star"
               ></i>
             </button>
-          </li>
-          <li class="actions-list__item">
+
             <button
               data-actions="close"
-              class="btn actions-list__button actions-list__button--white"
+              class="btn modal-content__actions-button modal-content__actions-button--white"
             >
               <i
-                class="icon icon-cancel actions-list__icon-cancel js-icon-cancel"
+                class="icon icon-cancel modal-content__actions-cancel js-icon-cancel"
               ></i>
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="spinner-overlay">
-      <div class="spinner">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
+      <div class="spinner-overlay">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </div>
     </div>
-  <script type="text/javascript" src="bundle.js?440120d9f1d4237da242"></script></body>
+  <script type="text/javascript" src="bundle.js?a113fd0062a5f876ba03"></script></body>
 </html>

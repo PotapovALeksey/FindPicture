@@ -10,6 +10,10 @@ html {
   font-family: $font-family-roboto;
 }
 
+.container {
+  padding-bottom: calculateRem(36);
+}
+
 .list {
   list-style: none;
   margin: 0;
