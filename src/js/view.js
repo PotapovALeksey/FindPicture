@@ -290,4 +290,5 @@ export default class View extends EventEmitter {
   toPaintBtn() {
     this.buttonAddToFavorites.style.color = "#cddc39";
   }
+
 }
