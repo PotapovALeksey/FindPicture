@@ -33,13 +33,7 @@
     margin-bottom: calculateRem(16);
   }
   &__img {
-    height: 65vh;
-    @include for-size(phone-only) {
-      height: 50vh;
-    }
-    @include for-size(tablet-portrait-up) {
-      height: 60vh;
-    }
+    height: 50vh;
   }
 
   &__actions {

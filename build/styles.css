@@ -399,8 +399,7 @@ html {
   padding-bottom: 2.25rem; }
 
 .scroll-hidden {
-  overflow: hidden;
-  margin-right: 1.0625rem; }
+  overflow: hidden; }
 
 .list {
   list-style: none;
@@ -575,13 +574,7 @@ html {
     margin-right: auto;
     margin-bottom: 1rem; }
   .modal-content__img {
-    height: 65vh; }
-    @media (max-width: 599px) {
-      .modal-content__img {
-        height: 50vh; } }
-    @media (min-width: 600px) and (max-width: 899px) {
-      .modal-content__img {
-        height: 60vh; } }
+    height: 50vh; }
   .modal-content__actions {
     display: flex;
     background-color: #673ab7;
@@ -619,21 +612,18 @@ html {
             filter: grayscale(0.7);
     -o-object-fit: cover;
        object-fit: cover; }
-    .favorites-cards-list__img__img {
-      -o-object-fit: cover;
-         object-fit: cover; }
-      @media (max-width: 599px) {
-        .favorites-cards-list__img__img {
-          height: 200px; } }
-      @media (min-width: 600px) and (max-width: 899px) {
-        .favorites-cards-list__img__img {
-          height: 185px; } }
-      @media (min-width: 900px) and (max-width: 1199px) {
-        .favorites-cards-list__img__img {
-          height: 180px; } }
-      @media (min-width: 1200px) {
-        .favorites-cards-list__img__img {
-          height: 225px; } }
+    @media (max-width: 599px) {
+      .favorites-cards-list__img {
+        height: 200px; } }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .favorites-cards-list__img {
+        height: 185px; } }
+    @media (min-width: 900px) and (max-width: 1199px) {
+      .favorites-cards-list__img {
+        height: 180px; } }
+    @media (min-width: 1200px) {
+      .favorites-cards-list__img {
+        height: 225px; } }
   .favorites-cards-list__item {
     position: relative; }
     .favorites-cards-list__item:hover .favorites-cards-list__img {

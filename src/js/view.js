@@ -1,6 +1,7 @@
 import EventEmitter from "./services/event-emiter";
 import createCard from "./templates/cards.hbs";
 import createFavoritesCard from "./templates/favorites-cards.hbs";
+import * as storage from "./services/storage";
 
 export default class View extends EventEmitter {
   constructor() {
@@ -21,16 +22,18 @@ export default class View extends EventEmitter {
     this.buttonFavoritesDelete = document.querySelector(
       ".js-favorites-cards-list__button"
     );
+    this.buttonPrev = document.querySelector(".js-actions-button__left");
+    this.buttonNext = document.querySelector(".js-actions-button__right");
     this.body = document.querySelector("body");
     this.currentValue = "";
     this.currentPage = 1;
     this.headerActions = document.querySelector(".js-header__actions");
+    this.cardListImage;
     this.form.addEventListener("submit", this.formSubmit.bind(this));
     this.buttonLoadMore.addEventListener(
       "click",
       this.loadMoreImages.bind(this)
     );
-
     this.modal.addEventListener("click", this.handleCloseModal.bind(this));
     window.addEventListener("keydown", this.handleEscapeCloseModal.bind(this));
     this.buttonAddToFavorites.addEventListener(
@@ -41,12 +44,20 @@ export default class View extends EventEmitter {
       "click",
       this.handleClickCreateFavoritesCards.bind(this)
     );
+    this.buttonNext.addEventListener(
+      "click",
+      this.handleClickNextImage.bind(this)
+    );
+    this.buttonPrev.addEventListener(
+      "click",
+      this.handleClickPrevImage.bind(this)
+    );
   }
 
   formSubmit(e) {
     e.preventDefault();
+    this.currentPage = 1;
     this.currentValue = this.input.value;
-
     if (this.currentValue === "") return;
 
     this.form.reset();
@@ -56,7 +67,6 @@ export default class View extends EventEmitter {
 
   loadMoreImages() {
     this.incrementCurrentPage();
-
     this.emit("loadMore", { value: this.currentValue, page: this.currentPage });
   }
 
@@ -74,6 +84,7 @@ export default class View extends EventEmitter {
   }
 
   createFavoritesMarkup(data) {
+    this.hideLoadMoreButton();
     if (data.length === 0) {
       this.main.innerHTML = this.addNoneFavorites();
       return;
@@ -143,12 +154,24 @@ export default class View extends EventEmitter {
     this.emit("deleteFavorites", item);
   }
 
+  handleClickNextImage() {
+    this.emit("nextImg");
+  }
+
+  handleClickPrevImage() {
+    this.emit("prevImg");
+  }
+
   deleteItem(item) {
     item.remove();
   }
 
   showModal(src) {
     this.modalInsertPictureId(src);
+
+    const id = this.modalImage.dataset.id;
+    this.thisFavoritesImage(id);
+
     this.stopScroll();
     this.modal.classList.add("modal--hidden");
   }
@@ -206,5 +229,61 @@ export default class View extends EventEmitter {
 
   startScroll() {
     this.body.classList.remove("scroll-hidden");
+  }
+
+  nextImage() {
+    const currentImgId = this.modalImage.dataset.id;
+    this.cardListImage = [...document.querySelectorAll(".js-cards-list__img")];
+    const currentImg = this.cardListImage.find(
+      el => el.dataset.id === currentImgId
+    );
+    let index = this.cardListImage.indexOf(currentImg);
+
+    let nextImg = this.cardListImage[index + 1];
+
+    if (!nextImg) {
+      index = 0;
+      nextImg = this.cardListImage[index];
+    }
+
+    this.modalImage.dataset.id = nextImg.dataset.id;
+    this.modalImage.src = nextImg.src;
+
+    this.thisFavoritesImage(this.modalImage.dataset.id);
+  }
+
+  prevImage() {
+    const currentImgId = this.modalImage.dataset.id;
+    this.cardListImage = [...document.querySelectorAll(".js-cards-list__img")];
+    const currentImg = this.cardListImage.find(
+      el => el.dataset.id === currentImgId
+    );
+    let index = this.cardListImage.indexOf(currentImg);
+
+    let prevImg = this.cardListImage[index - 1];
+
+    if (!prevImg) {
+      index = this.cardListImage.length - 1;
+      prevImg = this.cardListImage[index];
+    }
+
+    this.modalImage.dataset.id = prevImg.dataset.id;
+    this.modalImage.src = prevImg.src;
+
+    this.thisFavoritesImage(this.modalImage.dataset.id);
+  }
+
+  thisFavoritesImage(id) {
+    const localStorageFavorites = storage.get() || [];
+
+    const isFavorites = localStorageFavorites.find(el => {
+      return el.id === id;
+    });
+
+    if (isFavorites) {
+      this.buttonAddToFavorites.style.color = "#cddc39";
+    } else {
+      this.buttonAddToFavorites.style.color = "#ffffff";
+    }
   }
 }

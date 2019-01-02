@@ -10,6 +10,8 @@ export default class Controller {
     view.on("addFavorites", this.addToFavorites.bind(this));
     view.on("createFavoritesCards", this.createFavoritesCards.bind(this));
     view.on("deleteFavorites", this.deleteFavoritesCard.bind(this));
+    view.on("nextImg", this.nextImg.bind(this));
+    view.on("prevImg", this.prevImg.bind(this));
   }
 
   createCards(value) {
@@ -39,8 +41,15 @@ export default class Controller {
   }
 
   deleteFavoritesCard(item) {
-    console.log(item);
     this.model.deleteFavoritesCard(item);
     this.view.deleteItem(item);
+  }
+
+  nextImg() {
+    this.view.nextImage();
+  }
+
+  prevImg() {
+    this.view.prevImage();
   }
 }
