@@ -31,6 +31,7 @@ export default class Controller {
   }
 
   addToFavorites(image) {
+    this.view.toPaintBtn();
     this.model.addToFavorites(image);
   }
 

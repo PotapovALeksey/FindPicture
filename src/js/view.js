@@ -286,4 +286,8 @@ export default class View extends EventEmitter {
       this.buttonAddToFavorites.style.color = "#ffffff";
     }
   }
+
+  toPaintBtn() {
+    this.buttonAddToFavorites.style.color = "#cddc39";
+  }
 }
