@@ -34,9 +34,11 @@
 
     &:hover .favorites-cards-list__img {
       filter: grayscale(0);
+      transition: 0.3s linear;
     }
     &:hover .favorites-cards-list__button {
       display: block;
+      transition: 0.3s linear;
     }
 
     @include for-size(phone-only) {
