@@ -1,65 +1,62 @@
 .header__btn-favorites {
+  border: none;
+  width: 109px;
+  cursor: pointer;
+  outline: none;
   display: block;
   background-color: transparent;
   color: $color-button;
   font-size: $font-size-medium;
   outline: none;
+
+  @include for-size(phone-only) {
+    margin: 0 auto calculateRem(35);
+  }
+  @include for-size(tablet-portrait-up) {
+    margin: 0 auto calculateRem(35);
+  }
+  @include for-size(tablet-landscape-up) {
+    margin: 0 calculateRem(26) calculateRem(127) auto;
+  }
+  @include for-size(desktop-up) {
+    margin: 0 calculateRem(26) calculateRem(127) auto;
+  }
   &-icon {
     font-size: 17px;
     line-height: 1.2;
   }
-  &-wrap {
-    margin-top: calculateRem(33);
-    text-align: right;
-    @include for-size(phone-only) {
-      text-align: center;
-      margin-bottom: calculateRem(35);
-    }
-    @include for-size(tablet-portrait-up) {
-      text-align: center;
-      margin-bottom: calculateRem(35);
-    }
-    @include for-size(tablet-landscape-up) {
-      margin-right: calculateRem(26);
-    }
-    @include for-size(desktop-up) {
-      margin-right: calculateRem(26);
-    }
-  }
 }
 
 .header {
+  padding-top: calculateRem(33);
+  padding-bottom: calculateRem(30);
   @include for-size(phone-only) {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
   @include for-size(tablet-portrait-up) {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 }
 
 .header__actions {
   text-align: center;
-  margin-top: calculateRem(127);
-  @include for-size(phone-only) {
-    margin-top: calculateRem(30);
-  }
-  @include for-size(tablet-portrait-up) {
-    margin-top: calculateRem(30);
-  }
 }
 
 .actions {
   &__logo-link {
-    margin-bottom: calculateRem(46);
-    display: inline-block;
+    margin: 0 auto calculateRem(46);
+    display: block;
+    width: 302px;
+    @include for-size(phone-only) {
+      width: 257px;
+    }
   }
   &__logo {
+    display: block;
     @include for-size(phone-only) {
-      width: 85%;
+      width: 100%;
     }
   }
   &__input {
@@ -92,8 +89,4 @@
     border-radius: 15px;
     outline: none;
   }
-}
-
-.header {
-  margin-bottom: calculateRem(30);
 }

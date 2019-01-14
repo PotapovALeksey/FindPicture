@@ -33,7 +33,8 @@
     margin-bottom: calculateRem(16);
   }
   &__img {
-    height: 50vh;
+    height: 60vh;
+    object-fit: contain;
   }
 
   &__actions {

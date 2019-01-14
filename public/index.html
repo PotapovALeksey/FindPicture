@@ -13,95 +13,89 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <div class="header__btn-favorites-wrap">
-          <button class="btn header__btn-favorites js-header__btn-favorites">
-            <i class="header__btn-favorites-icon icon-star"></i> Избранное
-          </button>
-        </div>
-
-        <div class="header__actions js-header__actions">
-          <a href="#" class="actions__logo-link">
-            <img
-              src="./../src/img/logo.jpg"
-              alt="logotype"
-              class="actions__logo"
-            />
-          </a>
-          <form class="actions__form js-actions__form">
-            <input
-              type="text"
-              class="actions__input js-actions__input"
-              placeholder="Введите поисковый запрос"
-            />
-            <button type="submit" class="btn actions__button">Поиск</button>
-          </form>
-        </div>
-      </header>
-      <main class="main js-main"></main>
-
-      <button class="btn button-load-more js-button-load-more">
-        Показать ещё
+    <header class="header">
+      <button class="header__btn-favorites js-header__btn-favorites">
+        <i class="header__btn-favorites-icon icon-star"></i> Избранное
       </button>
 
-      <div class="modal js-modal">
-        <div class="modal-content">
-          <div class="modal-content__img-wrap">
-            <img
-              src=""
-              alt="image"
-              class="img modal-content__img js-modal-content__img"
-            />
-          </div>
+      <div class="header__actions js-header__actions">
+        <a href="#" class="actions__logo-link">
+          <img
+            src="./../src/img/logo.jpg"
+            alt="logotype"
+            class="actions__logo"
+          />
+        </a>
+        <form class="actions__form js-actions__form">
+          <input
+            type="text"
+            class="actions__input js-actions__input"
+            placeholder="Введите поисковый запрос"
+          />
+          <button type="submit" class="btn actions__button">Поиск</button>
+        </form>
+      </div>
+    </header>
+    <main class="main js-main"></main>
 
-          <div class="modal-content__actions">
-            <button
-              class="btn modal-content__actions-button modal-content__actions-button--white js-actions-button__left"
-            >
-              <i
-                class="icon icon-left-open modal-content__actions-left-open"
-              ></i>
-            </button>
-            <button
-              class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button--mr
+    <button class="btn button-load-more js-button-load-more">
+      Показать ещё
+    </button>
+
+    <div class="modal js-modal">
+      <div class="modal-content">
+        <div class="modal-content__img-wrap">
+          <img
+            src=""
+            alt="image"
+            class="img modal-content__img js-modal-content__img"
+          />
+        </div>
+
+        <div class="modal-content__actions">
+          <button
+            class="btn modal-content__actions-button modal-content__actions-button--white js-actions-button__left"
+          >
+            <i class="icon icon-left-open modal-content__actions-left-open"></i>
+          </button>
+          <button
+            class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button--mr
               js-actions-button__right"
-            >
-              <i
-                class="icon icon-right-open modal-content__actions-right-open"
-              ></i>
-            </button>
+          >
+            <i
+              class="icon icon-right-open modal-content__actions-right-open"
+            ></i>
+          </button>
 
-            <button
-              data-actions="favorites"
-              class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button--mr"
-            >
-              <i
-                class="icon icon-star modal-content__actions-star
+          <button
+            data-actions="favorites"
+            class="btn modal-content__actions-button modal-content__actions-button--white modal-content__actions-button--mr"
+          >
+            <i
+              class="icon icon-star modal-content__actions-star
       js-icon-star"
-              ></i>
-            </button>
+            ></i>
+          </button>
 
-            <button
-              data-actions="close"
-              class="btn modal-content__actions-button modal-content__actions-button--white"
-            >
-              <i
-                class="icon icon-cancel modal-content__actions-cancel js-icon-cancel"
-              ></i>
-            </button>
-          </div>
+          <button
+            data-actions="close"
+            class="btn modal-content__actions-button modal-content__actions-button--white"
+          >
+            <i
+              class="icon icon-cancel modal-content__actions-cancel js-icon-cancel"
+            ></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="spinner-overlay">
-        <div class="spinner">
-          <div class="rect1"></div>
-          <div class="rect2"></div>
-          <div class="rect3"></div>
-          <div class="rect4"></div>
-          <div class="rect5"></div>
-        </div>
+    <div class="spinner-overlay">
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
       </div>
     </div>
   </body>

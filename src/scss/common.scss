@@ -10,8 +10,8 @@ html {
   font-family: $font-family-roboto;
 }
 
-.container {
-  padding-bottom: calculateRem(36);
+body {
+  padding-bottom: 1px;
 }
 
 .scroll-hidden {

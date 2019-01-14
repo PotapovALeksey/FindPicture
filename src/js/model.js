@@ -16,16 +16,14 @@ export default class Model {
   }
 
   getImages({ value, page }) {
-    const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=8&page=${page}`;
+    const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=12&page=${page}`;
 
     return axios(url).then(response => {
-      console.log(response.data.hits);
-
       return (this.images = this.createArrayImages(response.data.hits));
     });
   }
   getMoreImages({ value, page }) {
-    const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=8&page=${page}`;
+    const url = `https://pixabay.com/api/?key=10567450-40b1156fc7fcc73c8204438b4&image_type=photo&q=${value}&per_page=12&page=${page}`;
 
     return axios(url).then(
       response =>

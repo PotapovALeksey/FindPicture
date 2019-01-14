@@ -7,7 +7,6 @@ export default class EventEmitter {
         this.events[type] = this.events[type] || [];
 
         this.events[type].push(callback);
-        console.log(this.events[type]);
     }
 
     emit(type, ...args) {

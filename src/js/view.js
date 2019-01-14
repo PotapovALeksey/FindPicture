@@ -52,6 +52,7 @@ export default class View extends EventEmitter {
       "click",
       this.handleClickPrevImage.bind(this)
     );
+    this.main.addEventListener("click", this.handleClickCard.bind(this));
   }
 
   formSubmit(e) {
@@ -71,8 +72,6 @@ export default class View extends EventEmitter {
   }
 
   createMarkup(data) {
-    this.main.addEventListener("click", this.handleClickCard.bind(this));
-
     const markup = createCard(data);
     this.main.innerHTML = markup;
 
@@ -224,10 +223,14 @@ export default class View extends EventEmitter {
   }
 
   stopScroll() {
+    const scrollWidth = window.innerWidth - this.body.clientWidth;
     this.body.classList.add("scroll-hidden");
+    this.body.style.paddingRight = scrollWidth + "px";
   }
 
   startScroll() {
+    this.body.style.paddingRight = 0 + "px";
+
     this.body.classList.remove("scroll-hidden");
   }
 
@@ -290,5 +293,4 @@ export default class View extends EventEmitter {
   toPaintBtn() {
     this.buttonAddToFavorites.style.color = "#cddc39";
   }
-
 }
